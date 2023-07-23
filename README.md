@@ -103,12 +103,12 @@ _CODE_ 404
 
 ##### *METHOD GET by ID* Return specified product :
 
-- URL Params : ```json
+- URL Params : ```
 id=[integer]```.
 - Data Params : *None*.
 - Headers : 
 Content-Type: application/json
-Authorization:Baerer ```json
+Authorization:Baerer ```
 <QAuth Token>```.
 - Success Response :
   _CODE 200_.
