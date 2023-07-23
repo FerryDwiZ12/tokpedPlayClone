@@ -6,13 +6,13 @@ this project about tokopedia play clone, this is mid term from GIGIH 3.0
 in this project build with MERN is
 ('mongoodb, express, reactJs and NodeJS').
 
-##### *NOTED* : to download the latest version of npm, on the command line, run the following command:
+##### _NOTED_ : to download the latest version of npm, on the command line, run the following command:
 
 ```bash
 npm install -g npm
 ```
 
-##### *NOTED* : to install this project depedencies, run the following command:
+##### _NOTED_ : to install this project depedencies, run the following command:
 
 ```bash
 npm install
@@ -20,7 +20,7 @@ npm install
 
 ### 1. Database Structure :
 
-##### *NOTED* : to create **Database** in MONGOSH with name database is : tokpedPlayClone 
+##### _NOTED_ : to create **Database** in MONGOSH with name database is : tokpedPlayClone
 
 ```bash
     use tokpedPlayClone
@@ -62,18 +62,16 @@ npm install
 
 #### GET /products
 
-##### *METHOD GET* Return all product in the system :
+##### _METHOD GET_ Return all product in the system :
 
-- URL Params
-None
-- Data Params
-None
-- Headers
-Content-Type: application/json
--Success Response :
-*CODE 200*
+- URL Params : _None_.
+- Data Params : _None_.
+- Headers : Content-Type: application/json.
+- Success Response :
+  _CODE 200_.
 
-*RESULT*
+*Result :*
+
 ```json
 {
   "Product": [
@@ -99,4 +97,20 @@ Content-Type: application/json
 ```
 
 -Error Response :
-*CODE* 404
+_CODE_ 404
+
+#### GET /products/:id
+
+##### *METHOD GET by ID* Return specified product :
+
+- URL Params : ```json
+id=[integer]```.
+- Data Params : *None*.
+- Headers : 
+Content-Type: application/json
+Authorization:Baerer ```json
+<QAuth Token>```.
+- Success Response :
+  _CODE 200_.
+
+*Result :*
