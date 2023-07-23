@@ -32,7 +32,7 @@ npm install
     db.createCollection("Products")
 ```
 
-##### Example data on collection mongoodb :
+##### Example data on collection mongoodb for collection Product :
 
 ```json
 {
@@ -50,7 +50,7 @@ npm install
       "comments": [
         {
           "username": "user 1",
-          "comment": "vidio sampah bla bla bla"
+          "comment": "vidio ini bla bla bla"
         }
       ]
     }
@@ -59,3 +59,44 @@ npm install
 ```
 
 ### 2. List API request and response
+
+#### GET /products
+
+##### *METHOD GET* Return all product in the system :
+
+- URL Params
+None
+- Data Params
+None
+- Headers
+Content-Type: application/json
+-Success Response :
+*CODE 200*
+
+*RESULT*
+```json
+{
+  "Product": [
+    {
+      "idProduct": 1,
+      "title": "abc",
+      "price": 7,
+      "urlVidioList": [
+        {
+          "thumbnailPhotos": "https://",
+          "urlVidio": "https://"
+        }
+      ],
+      "comments": [
+        {
+          "username": "user 1",
+          "comment": "vidio ini bla bla bla"
+        }
+      ]
+    }
+  ]
+}
+```
+
+-Error Response :
+*CODE* 404
