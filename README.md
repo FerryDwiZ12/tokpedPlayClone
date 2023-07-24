@@ -32,37 +32,51 @@ npm install
     db.createCollection("Products")
 ```
 
-##### Example data on collection mongoodb for collection Product :
+##### Example data on collection mongoodb for collection :
+
+#### Videos :
 
 ```json
-{
-  "Product": [
-    {
-      "idProduct": 1,
-      "title": "abc",
-      "price": 7,
-      "urlVidioList": [
-        {
-          "thumbnailPhotos": "https://",
-          "urlVidio": "https://"
-        }
-      ],
-      "comments": [
-        {
-          "username": "user 1",
-          "comment": "vidio ini bla bla bla"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "VidioID": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+    "UrlImageThumbnail": "https://example.com/thumbnail1.jpg",
+    "VidioLink": "https://example.com/video1.mp4"
+  }
+]
+```
+
+#### Product :
+
+```json
+[
+  {
+    "VidioID": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+    "ProductID": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "LinkProduct": "https://example.com/product1",
+    "Title": "Product 1",
+    "Price": 12000
+  }
+]
+```
+
+#### Comments :
+
+```json
+[
+  {
+    "VidioID": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+    "username": "user1",
+    "comment": "Great video!"
+  }
+]
 ```
 
 ### 2. List API request and response
 
 #### GET /products
 
-##### _METHOD GET_ Return all product in the system :
+##### _METHOD GET_ Return all Videos in the system :
 
 - URL Params : _None_.
 - Data Params : _None_.
@@ -70,30 +84,16 @@ npm install
 - Success Response :
   _CODE 200_.
 
-*Result :*
+_Result :_
 
 ```json
-{
-  "Product": [
-    {
-      "idProduct": 1,
-      "title": "abc",
-      "price": 7,
-      "urlVidioList": [
-        {
-          "thumbnailPhotos": "https://",
-          "urlVidio": "https://"
-        }
-      ],
-      "comments": [
-        {
-          "username": "user 1",
-          "comment": "vidio ini bla bla bla"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "VidioID": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+    "UrlImageThumbnail": "https://example.com/thumbnail1.jpg",
+    "VidioLink": "https://example.com/video1.mp4"
+  }
+]
 ```
 
 -Error Response :
@@ -101,16 +101,16 @@ _CODE_ 404
 
 #### GET /products/:id
 
-##### *METHOD GET by ID* Return specified product :
+##### _METHOD GET by ID_ Return specified product :
 
-- URL Params : ```
-id=[integer]```.
-- Data Params : *None*.
-- Headers : 
-Content-Type: application/json
-Authorization:Baerer ```
-<QAuth Token>```.
+- URL Params : `
+id=[integer]`.
+- Data Params : _None_.
+- Headers :
+  Content-Type: application/json
+  Authorization:Baerer `
+<QAuth Token>`.
 - Success Response :
   _CODE 200_.
 
-*Result :*
+_Result :_
