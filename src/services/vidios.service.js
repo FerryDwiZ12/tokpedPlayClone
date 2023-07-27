@@ -1,0 +1,28 @@
+const Video = require("../models/vidios.model");
+
+async function getAllVideos() {
+  try {
+    const videos = await Video.find({}, { _id: 0 });
+    return videos;
+  } catch (error) {
+    throw new Error("Error retrieving videos from the database");
+  }
+}
+
+async function addVideo(titleVideo, urlImageThumbnail, videoLink) {
+  try {
+    const newVideo = await Video.create({
+      titleVideo,
+      urlImageThumbnail,
+      videoLink,
+    });
+    return newVideo;
+  } catch (error) {
+    throw new Error("Error adding video to the database: " + error.message);
+  }
+}
+
+module.exports = {
+  getAllVideos,
+  addVideo,
+};
