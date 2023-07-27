@@ -11,8 +11,7 @@ async function getProductsByVideoId(videoId) {
 
 async function createProduct(videoId, linkProduct, title, price) {
   try {
-    const priceInRupiah = price / 100;
-    const newProduct = await Product.create({ videoId, linkProduct, title, price: priceInRupiah });
+    const newProduct = await Product.create({ videoId, linkProduct, title, price});
     return newProduct;
   } catch (error) {
     throw new Error('Error creating a new product');

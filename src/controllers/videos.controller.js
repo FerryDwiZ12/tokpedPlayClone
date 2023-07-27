@@ -1,5 +1,7 @@
 const videoService = require("../services/vidios.service");
 
+
+// untuk mengambil semua data videos
 async function getAllVideos(req, res) {
   try {
     const videos = await videoService.getAllVideos();
@@ -9,6 +11,7 @@ async function getAllVideos(req, res) {
   }
 }
 
+// untuk menambah semua data videos
 async function addVideo(req, res) {
   const { titleVideo, urlImageThumbnail, videoLink } = req.body;
   try {
@@ -19,7 +22,22 @@ async function addVideo(req, res) {
   }
 }
 
+// untuk filter data videos
+async function getVideosByTitle(req, res) {
+  const { titleVideo } = req.params;
+  try {
+    const videos = await videoService.getVideosByTitle(titleVideo);
+    if (videos.length === 0) {
+      return res.status(404).json({ message: "Video not found" });
+    }
+    res.status(200).json(videos);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 module.exports = {
   getAllVideos,
   addVideo,
+  getVideosByTitle
 };

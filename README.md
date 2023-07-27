@@ -18,12 +18,6 @@ npm install -g npm
 npm install
 ```
 
-##### _NOTED_ : How run the project, run the following command:
-
-```bash
-npm start / npm run start
-```
-
 ### 1. Database Structure :
 
 database have **3 collection** it's videos, product, comments :
@@ -53,9 +47,39 @@ product and comments have vidioId from vidios : videoId
     db.createCollection("comments")
 ```
 
-##### Example data on collection mongoodb for collection :
+##### Database Structure Design :
 
-#### Videos :
+![alt text](./images/diagram.png)
+
+### 2. API Structure
+
+#### API Structure Design :
+
+on this structure API, I use folder structure :
+
+**Data Acces :**
+
+- Models :
+- Services :
+- Controllers :
+- Routes :
+
+![alt text](./images/APIStrctureDesign.png)
+
+### 3. List API request and response
+
+#### GET /videos (all videos)
+
+##### _METHOD GET_ Return all Videos in the system :
+
+- URL Params : _None_.
+- Data Params : _None_.
+- Headers : Content-Type: application/json.
+
+- Success Response :
+  _CODE 200_.
+
+_Result :_
 
 ```json
 [
@@ -68,85 +92,168 @@ product and comments have vidioId from vidios : videoId
 ]
 ```
 
-#### Product :
+- Error :
+  _CODE 500_. : Internal server error
+
+#### GET /by-title/:titleVideo (filter/search vidio)
+
+##### \_METHOD GET by VideosID Return specified Videos :
+
+- URL Params : `
+VidioID=[uuid]`.
+- Data Params : vidioId.
+- Headers :
+  Content-Type: application/json.
+
+- Success Response :
+  _CODE 200_. : succesed
+  _CODE 404_. : Video not found
+
+_Result :_
 
 ```json
 [
   {
-    "productId": "8c16dd59-0c13-4854-a4a1-23f3b06a90fa",
-    "videoId": "e358ba51-ecd5-4305-8fcc-25bf46bc4830",
-    "linkProduct": "https://www.tokopedia.com/bhinnekaha/mito-mesin-cuci-portable-wm-1?extParam=ivf%3Dfalse%26src%3Dsearch",
-    "title": "Mesin Cuci Portabel MITO",
-    "price": 583000
+    "videoId": "7822253c-08c8-415b-ac96-1b70757811e3",
+    "titleVideo": "Cubic Lemari Pakaian Minimalis",
+    "urlImageThumbnail": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/10/7/7236a825-3ba4-4dad-b63c-809f7393e762.jpg",
+    "videoLink": "https://youtu.be/NfixTeXW320"
   }
 ]
 ```
 
-#### Comments :
+#### POST /videos
+
+create a new videos and return the new object.
+
+- URL Params :
+  _NONE_
+- Headers :
+  Context-Type: application/json
+- Data Params :
+
+```json
+[
+  {
+    "titleVideo": "Cubic Lemari Pakaian Minimalis",
+    "urlImageThumbnail": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/10/7/7236a825-3ba4-4dad-b63c-809f7393e762.jpg",
+    "videoLink": "https://youtu.be/NfixTeXW320"
+  }
+]
+```
+
+- Success Response :
+  _CODE 201_. : succesed
+
+- Error :
+  _CODE 505_. : Internal server error
+
+#### GET /products/:vidioId
+
+Returns all products in the system.
+
+- URL Params :
+  _NONE_
+- Data Params :
+  _NONE_
+- Headers
+  Context-Type: application/json
+- Success Response :
+  _CODE 201_. : succesed
+- Error :
+  _CODE 500_. : Internal server error
+
+_RESULT :_
+
+```json
+[
+  {
+    "productId": "6088b470-fe3a-4555-86da-008c65d24ceb",
+    "videoId": "e358ba51-ecd5-4305-8fcc-25bf46bc4830",
+    "linkProduct": "https://www.tokopedia.com/bhinnekaha/mito-mesin-cuci-portable-wm-1?extParam=ivf%3Dfalse%26src%3Dsearch",
+    "title": "Mesin Cuci Portabel MITO",
+    "price": 583002
+  }
+]
+```
+
+#### POST /product
+
+create a new product and return the new object.
+
+- URL Params :
+  _NONE_
+- Headers :
+  Context-Type: application/json
+- Data Params :
+
+```json
+[
+  {
+    "linkProduct": "https://www.tokopedia.com/bhinnekaha/mito-mesin-cuci-portable-wm-1?extParam=ivf%3Dfalse%26src%3Dsearch",
+    "title": "Mesin Cuci Portabel MITO",
+    "price": 583002
+  }
+]
+```
+
+- Success Response :
+  _CODE 201_. : succesed
+
+- Error :
+  _CODE 505_. : Internal server error
+
+#### GET /comments/:vidioId/comments
+
+Returns all products in the system.
+
+- URL Params :
+  params:vidioId
+- Data Params :
+  _NONE_
+- Headers
+  Context-Type: application/json
+- Success Response :
+  _CODE 201_. : succesed
+- Error :
+  _CODE 500_. : Internal server error
+
+_RESULT :_
 
 ```json
 [
   {
     "videoId": "e358ba51-ecd5-4305-8fcc-25bf46bc4830",
     "username": "Ferry",
+    "comment": "wah barangnya sangat keren",
+    "timestamp": "2023-07-27T18:34:04.068Z"
+  }
+]
+```
+
+#### POST /comments/:videoId/comments
+
+create a new product and return the new object.
+
+- URL Params :
+  _NONE_
+- Headers :
+  Context-Type: application/json
+- Data Params :
+
+```json
+[
+  {
+    "username": "Zulkhifli",
     "comment": "wah barangnya sangat keren"
   }
 ]
 ```
 
-### 2. List API request and response
+### 4. How to run in local
 
-#### GET /videos
+##### _NOTED_ : How run the project, run the following command:
 
-##### _METHOD GET_ Return all Videos in the system :
-
-- URL Params : _None_.
-- Data Params : _None_.
-- Headers : Content-Type: application/json.
-- Success Response :
-  _CODE 200_.
-
-_Result :_
-
-```json
-[
-  {
-    "VidioID": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
-    "ProductID": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-    "LinkProduct": "https://example.com/product1",
-    "Title": "Product 1",
-    "Price": 12000
-  }
-]
+```bash
+npm start / npm run start
 ```
-
-- Error Response :
-  _CODE_ 404
-
-#### GET /videos/:id
-
-##### \_METHOD GET by VideosID Return specified Videos :
-
-- URL Params : `
-VidioID=[integer]`.
-- Data Params : _None_.
-- Headers :
-  Content-Type: application/json
-  Authorization:Baerer `
-<QAuth Token>`.
-- Success Response :
-  _CODE 200_.
-
-_Result :_
-
-```json
-[
-  {
-    "VidioID": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
-    "UrlImageThumbnail": "https://example.com/thumbnail1.jpg",
-    "VidioLink": "https://example.com/video1.mp4"
-  }
-]
-```
-
-#### POST /comments/:id

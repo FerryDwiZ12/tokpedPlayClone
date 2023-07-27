@@ -8,5 +8,6 @@ const productController = require('../controllers/product.controller');
 router.get('/:videoId/products', productController.getProductsByVideoId);
 // Route to create a new product for a specific videoId
 router.post('/:videoId/products', productController.createProduct);
+
 module.exports = router;
     

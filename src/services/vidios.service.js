@@ -1,5 +1,7 @@
 const Video = require("../models/vidios.model");
 
+
+// Mengambil semua data Videos
 async function getAllVideos() {
   try {
     const videos = await Video.find({}, { _id: 0 });
@@ -9,6 +11,7 @@ async function getAllVideos() {
   }
 }
 
+// Menambah data vidio
 async function addVideo(titleVideo, urlImageThumbnail, videoLink) {
   try {
     const newVideo = await Video.create({
@@ -22,7 +25,18 @@ async function addVideo(titleVideo, urlImageThumbnail, videoLink) {
   }
 }
 
+// Digunakan untuk Filter
+async function getVideosByTitle(titleVideo) {
+  try {
+    const videos = await Video.find({ titleVideo }, { _id: 0 });
+    return videos;
+  } catch (error) {
+    throw new Error("Error retrieving videos by title from the database");
+  }
+}
+
 module.exports = {
   getAllVideos,
   addVideo,
+  getVideosByTitle,
 };
